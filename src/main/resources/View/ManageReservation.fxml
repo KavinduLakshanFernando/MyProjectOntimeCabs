@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="650.0" prefWidth="763.0" style="-fx-background-color: #edf2fb;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.ManageReservationController">
+   <children>
+      <Rectangle fx:id="ReservationType" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="195.0" layoutX="6.0" layoutY="57.0" stroke="MEDIUMBLUE" strokeType="INSIDE" width="750.0" />
+      <Text fill="MEDIUMBLUE" layoutX="15.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reservation Details ;">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="41.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer NIC :">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <TextField fx:id="customerNic" alignment="CENTER" layoutX="42.0" layoutY="114.0" />
+      <Text layoutX="303.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reservation ID :">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <TextField fx:id="reservationid" alignment="CENTER" layoutX="302.0" layoutY="116.0" />
+      <TextField fx:id="txtSearchReservation" layoutX="437.0" layoutY="14.0" onAction="#searchOnActionReservation" prefHeight="25.0" prefWidth="316.0" promptText="Search From Here" />
+      <Text layoutX="573.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vehicle Number :">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <Text layoutX="422.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Date :">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="282.0" layoutX="7.0" layoutY="266.0" stroke="MEDIUMBLUE" strokeType="INSIDE" width="510.0" />
+      <Text fill="MEDIUMBLUE" layoutX="17.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment Details :">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="38.0" layoutY="327.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment ID :">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtpaymentid" alignment="CENTER" layoutX="39.0" layoutY="332.0" />
+      <Text layoutX="42.0" layoutY="391.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment Date :">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <Text layoutX="289.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment Method :">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <ComboBox fx:id="vehicleNumbercmb" layoutX="573.0" layoutY="117.0" prefWidth="150.0" />
+      <ComboBox fx:id="paymentMethodcmb" layoutX="288.0" layoutY="395.0" prefWidth="150.0" />
+      <Button layoutX="330.0" layoutY="473.0" mnemonicParsing="false" onAction="#clearReservationOnAction" prefHeight="29.0" prefWidth="78.0" style="-fx-background-color: #0000cd;" text="Clear" textFill="WHITE" />
+      <Text layoutX="163.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Service Type :">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <ComboBox fx:id="ServiceCmb" layoutX="164.0" layoutY="187.0" prefWidth="150.0" />
+      <Text layoutX="287.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <TextField fx:id="PaymentAmount" alignment="CENTER" layoutX="288.0" layoutY="329.0" />
+      <DatePicker fx:id="PaymentDate" layoutX="41.0" layoutY="396.0" prefHeight="25.0" prefWidth="149.0" />
+      <DatePicker fx:id="ReservationDate" layoutX="422.0" layoutY="188.0" />
+      <Button layoutX="77.0" layoutY="473.0" mnemonicParsing="false" onAction="#AddreservatuinOnAction" prefHeight="29.0" prefWidth="78.0" style="-fx-background-color: #0000cd;" text="Add " textFill="WHITE" />
+      <Button layoutX="206.0" layoutY="473.0" mnemonicParsing="false" onAction="#DeletereservatuinOnAction" prefHeight="29.0" prefWidth="78.0" style="-fx-background-color: #0000cd;" text="Delete" textFill="WHITE" />
+   </children>
+</AnchorPane>

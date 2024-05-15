@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="650.0" prefWidth="763.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.ManageMaintenanceController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="239.0" layoutX="14.0" layoutY="80.0" stroke="#080894" strokeType="INSIDE" width="740.0" />
+      <Text fill="#080894" layoutX="30.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maintenance Details :">
+         <font>
+            <Font name="Candara Bold" size="17.0" />
+         </font>
+      </Text>
+      <Text layoutX="345.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mainteneance Id :">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <Text layoutX="582.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description :">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <Text layoutX="458.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cost  :">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtMaintenanceId" layoutX="346.0" layoutY="142.0" />
+      <TextField fx:id="MaintenanceCost" layoutX="459.0" layoutY="201.0" />
+      <TextField fx:id="txtDesc" layoutX="580.0" layoutY="138.0" />
+      <Button layoutX="88.0" layoutY="260.0" mnemonicParsing="false" onAction="#SaveMaintenance" prefHeight="29.0" prefWidth="78.0" style="-fx-background-color: #0000cd;" text="Add" textFill="#fcf5f5" />
+      <Button layoutX="299.0" layoutY="260.0" mnemonicParsing="false" onAction="#DeletMaintenance" prefHeight="29.0" prefWidth="78.0" style="-fx-background-color: #0000cd;" text="Delete" textFill="WHITE" />
+      <Button layoutX="404.0" layoutY="260.0" mnemonicParsing="false" onAction="#ClearMaintenance" prefHeight="29.0" prefWidth="78.0" style="-fx-background-color: #0000cd;" text="clear" textFill="WHITE" />
+      <TextField fx:id="txtserchMaintenance" layoutX="441.0" layoutY="16.0" onAction="#SearchmaintenanceOnAction" prefHeight="25.0" prefWidth="316.0" promptText="Search From Here" style="-fx-border-color: #080894;" />
+      <Text layoutX="74.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vehicle Number :" wrappingWidth="119.42529296875">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <Text layoutX="158.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date :" wrappingWidth="129.42529296875">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="289.0" layoutX="12.0" layoutY="344.0" stroke="#080894" strokeType="INSIDE" width="744.0" />
+      <ComboBox fx:id="Vehiclenumcmb" layoutX="74.0" layoutY="138.0" prefWidth="150.0" />
+      <DatePicker fx:id="MaintenanceDate" layoutX="151.0" layoutY="201.0" />
+   </children>
+</AnchorPane>

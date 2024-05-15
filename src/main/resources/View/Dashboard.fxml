@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="650.0" prefWidth="1000.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.DashboardController">
+   <children>
+      <AnchorPane prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #0B4141;">
+         <children>
+            <Button layoutX="140.0" layoutY="596.0" mnemonicParsing="false" onAction="#logoutOnAction" prefHeight="33.0" prefWidth="79.0" style="-fx-background-color: #edf2fb;" text="Logout" />
+            <Button layoutX="79.0" layoutY="179.0" mnemonicParsing="false" onAction="#ManageCustomerOnAction" prefHeight="29.0" prefWidth="103.0" style="-fx-background-color: #edf2fb;" text="Customer" />
+            <Button layoutX="80.0" layoutY="226.0" mnemonicParsing="false" onAction="#ManageVrhicalrOnAction" prefHeight="29.0" prefWidth="103.0" style="-fx-background-color: #edf2fb;" text="Vehicle" />
+            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="53.0" layoutY="363.0">
+               <image>
+                  <Image url="@../Icon/img_2.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="53.0" layoutY="270.0">
+               <image>
+                  <Image url="@../Icon/img_5.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="79.0" layoutY="274.0" mnemonicParsing="false" onAction="#ManageReservationOnAction" prefHeight="29.0" prefWidth="103.0" style="-fx-background-color: #edf2fb;" text="Reservation" />
+            <Button layoutX="79.0" layoutY="367.0" mnemonicParsing="false" onAction="#ManageMaintenanceOnAction" prefHeight="29.0" prefWidth="103.0" style="-fx-background-color: #edf2fb;" text="Maintenance" />
+            <Button layoutX="79.0" layoutY="321.0" mnemonicParsing="false" onAction="#ManageDriverOnAction" prefHeight="29.0" prefWidth="103.0" style="-fx-background-color: #edf2fb;" text="Driver" />
+            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="50.0" layoutY="408.0">
+               <image>
+                  <Image url="@../Icon/img_3.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="80.0" layoutY="417.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="103.0" text="Report" visible="false" />
+            <Button layoutX="80.0" layoutY="470.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="103.0" text="Button" visible="false" />
+            <Button layoutX="79.0" layoutY="421.0" mnemonicParsing="false" onAction="#gotoProfile" prefHeight="29.0" prefWidth="103.0" text="Profile" />
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="33.0" fitWidth="28.0" layoutX="32.0" layoutY="170.0">
+         <image>
+            <Image url="@../Icon/img_4.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="36.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboard">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Text>
+      <AnchorPane fx:id="dashID" layoutX="240.0" prefHeight="766.0" prefWidth="1125.0" style="-fx-background-color: #edf2fb;">
+         <children>
+            <Text fill="#2c01a1" layoutX="60.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboard :">
+               <font>
+                  <Font name="System Bold Italic" size="26.0" />
+               </font>
+            </Text>
+            <AnchorPane fx:id="acRv" layoutX="208.0" layoutY="159.0" prefHeight="79.0" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-border-radius: 10; -fx-border-color: #220cb5; -fx-border-width: 2; -fx-background-radius: 10;">
+               <children>
+                  <Text layoutX="11.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Reservations">
+                     <font>
+                        <Font name="System Bold Italic" size="13.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="reservationcount" layoutX="51.0" layoutY="13.0" prefHeight="35.0" prefWidth="62.0" text="Label" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="acVehicle" layoutX="578.0" layoutY="158.0" prefHeight="79.0" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-border-radius: 10; -fx-border-color: #220cb5; -fx-border-width: 2; -fx-background-radius: 10;">
+               <children>
+                  <Text fill="#1b1e11" layoutX="14.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Vehicles">
+                     <font>
+                        <Font name="System Bold Italic" size="13.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="vehiclecount" layoutX="61.0" layoutY="14.0" prefHeight="35.0" prefWidth="62.0" text="Label" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="acCustomer" layoutX="19.0" layoutY="158.0" prefHeight="79.0" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-border-radius: 10; -fx-border-color: #220cb5; -fx-border-width: 2; -fx-background-radius: 10;">
+               <children>
+                  <Text layoutX="19.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Customers">
+                     <font>
+                        <Font name="System Bold Italic" size="13.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="customercount" layoutX="43.0" layoutY="17.0" prefHeight="35.0" prefWidth="62.0" text="Label" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="acDriver1" layoutX="396.0" layoutY="159.0" prefHeight="79.0" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-border-radius: 10; -fx-border-color: #220cb5; -fx-border-width: 2; -fx-background-radius: 10;">
+               <children>
+                  <Text layoutX="14.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Drivers">
+                     <font>
+                        <Font name="System Bold Italic" size="13.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="driverscount" layoutX="72.0" layoutY="11.0" prefHeight="35.0" prefWidth="62.0" text="Label" />
+               </children>
+            </AnchorPane>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0b4141" height="60.0" layoutX="-1.0" stroke="BLACK" strokeType="INSIDE" width="1126.0" />
+            <Label fx:id="lblDate" layoutX="614.0" layoutY="-4.0" prefHeight="60.0" prefWidth="154.0" text="2022/10/12" textFill="WHITE">
+               <font>
+                  <Font name="Yu Gothic Medium" size="24.0" />
+               </font>
+            </Label>
+            <Text fill="WHITE" layoutX="273.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OnTime Cabs" wrappingWidth="181.890625">
+               <font>
+                  <Font name="System Bold Italic" size="29.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="276.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Destination A Second Away" wrappingWidth="349.890625">
+               <font>
+                  <Font name="System Bold Italic" size="17.0" />
+               </font>
+            </Text>
+            <AnchorPane layoutX="20.0" layoutY="305.0" prefHeight="315.0" prefWidth="696.0" style="-fx-background-color: #bdc3c7; -fx-border-radius: 10; -fx-border-color: #220cb5; -fx-border-width: 2; -fx-background-radius: 10;">
+               <children>
+                  <ImageView fitHeight="295.0" fitWidth="698.0" layoutX="12.0" layoutY="9.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../Icon/R.gif" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

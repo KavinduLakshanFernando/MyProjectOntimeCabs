@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="650.0" prefWidth="763.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.ProfileController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#edf2fb" height="633.0" layoutX="7.0" layoutY="20.0" stroke="#4d00ff" strokeType="INSIDE" width="749.0" />
+      <ImageView fitHeight="180.0" fitWidth="182.0" layoutX="26.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Icon/img_1.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="222.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="        Welcome to Ontime Cabs, the number one cab service &amp; rent a car company in western province which offers a range of services including 24x7 taxi service in any part of the country, rent a car service, airport transfers, wedding car service and cab service at an affordable price with a wide variety of vehicle fleet." textAlignment="JUSTIFY" wrappingWidth="520.69140625">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="20.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Our aim is to provide the world class customer service to the customers at an affordable price along with utmost efficiency and comfort." wrappingWidth="722.69140625">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="35.0" layoutY="345.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&gt; Rent a Car Service" wrappingWidth="154.13671875">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="35.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&gt; Wedding Car Service" wrappingWidth="154.13671875">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="35.0" layoutY="387.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&gt; Van for Hire" wrappingWidth="133.13671875">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="36.0" layoutY="408.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&gt; Bus for Hire" wrappingWidth="133.13671875">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="35.0" layoutY="427.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&gt; Airport Drop &amp; Pickup" wrappingWidth="154.13671875">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="300.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We Have Well Experienced &amp; Professional Drivers" wrappingWidth="340.13671875">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="300.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Our Drivers Know The Shortest Route To Your Destination" wrappingWidth="377.13671875">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="300.0" layoutY="391.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We Have A Big Fleet Of Vehicles" wrappingWidth="289.13671875">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="301.0" layoutY="413.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We Have Lowest Rates In Your City" wrappingWidth="319.13671875">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="301.0" layoutY="434.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We Don’t Have Hidden Charges" wrappingWidth="308.13671875">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="21.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Services" wrappingWidth="154.13671875">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="275.0" layoutY="309.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Why Choose Us?" wrappingWidth="154.13671875">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="227.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ontime Cabs" wrappingWidth="154.13671875">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="301.0" layoutY="454.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We Are Flexible" wrappingWidth="217.13671875" />
+      <Text layoutX="301.0" layoutY="474.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We Are Convenient" wrappingWidth="217.13671875" />
+      <Text layoutX="21.0" layoutY="517.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No. 192/D, Eluwila,Panadura." wrappingWidth="217.13671875" />
+      <Text layoutX="21.0" layoutY="562.0" strokeType="OUTSIDE" strokeWidth="0.0" text="038 3 385 385" wrappingWidth="217.13671875" />
+      <Text layoutX="21.0" layoutY="541.0" strokeType="OUTSIDE" strokeWidth="0.0" text="077 23 70 451" wrappingWidth="217.13671875" />
+   </children>
+</AnchorPane>
