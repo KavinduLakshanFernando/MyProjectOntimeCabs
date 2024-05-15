@@ -15,6 +15,7 @@ public class LoginFormController {
     public TextField txtPassword;
 
     public int k = 0;
+    public String ka = null;
 
 
     public void LoginFormOnAction(ActionEvent actionEvent) throws IOException {
