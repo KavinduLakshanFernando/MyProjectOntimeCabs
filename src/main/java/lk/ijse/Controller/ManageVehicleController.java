@@ -15,16 +15,18 @@ import lk.ijse.Repository.VehicleRegister;
 import lk.ijse.Repository.VehicleRepo;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 
 public class ManageVehicleController {
-    public TextField txtinsuranceendDate;
+    public DatePicker txtinsuranceendDate;
     public ComboBox<String> cmbmodel;
     public ComboBox <String> cmbcolor;
     public TextField txtInshurance;
     public TextField txtserchVehicle;
-    public TextField txtinsuranceStartDate;
+    public DatePicker txtinsuranceStartDate;
     public TextField txtVehicleNumber;
 
     @FXML
@@ -55,7 +57,28 @@ public class ManageVehicleController {
 
         setCmbmodel();
         setCmbcolur();
+        showSelectedUserDetails();
     }
+
+    private void showSelectedUserDetails() {
+        VehicleTMDetails selectedUser = VehicleTable.getSelectionModel().getSelectedItem();
+        VehicleTable.setOnMouseClicked(event -> showSelectedUserDetails());
+        if (selectedUser != null) {
+            txtVehicleNumber.setText(selectedUser.getVNumber());
+            txtInshurance.setText(selectedUser.getINumber());
+            cmbcolor.setValue(selectedUser.getColor());
+            cmbmodel.setValue(selectedUser.getModel());
+            txtinsuranceStartDate.setValue(LocalDate.parse(selectedUser.getStartDate()));
+            txtinsuranceendDate.setValue(LocalDate.parse(selectedUser.getEndDate()));
+        }
+    }
+
+
+
+
+
+
+
     public void loadAllVehicles() throws SQLException {
         ObservableList<VehicleTMDetails> obList = FXCollections.observableArrayList();
 
@@ -86,8 +109,8 @@ public class ManageVehicleController {
         String iId = txtInshurance.getText();
         String model = cmbmodel.getValue();
         String colur = cmbcolor.getValue();
-        String stsate = txtinsuranceStartDate.getText();
-        String enddate = txtinsuranceendDate.getText();
+        Date stsate = Date.valueOf(txtinsuranceStartDate.getValue());
+        Date enddate = Date.valueOf(txtinsuranceendDate.getValue());
         String status = "active";
 
         Insurence insurence = new Insurence(iId, stsate, enddate);
@@ -154,8 +177,8 @@ new Alert(Alert.AlertType.ERROR,"vehicle not delete").show();
         String iId = txtInshurance.getText();
         String model = cmbmodel.getValue();
         String colur = cmbcolor.getValue();
-        String stsate = txtinsuranceStartDate.getText();
-        String enddate = txtinsuranceendDate.getText();
+        Date stsate = Date.valueOf(txtinsuranceStartDate.getValue());
+        Date enddate = Date.valueOf(txtinsuranceendDate.getValue());
 
 
     }
@@ -174,8 +197,8 @@ new Alert(Alert.AlertType.ERROR,"vehicle not delete").show();
                 txtInshurance.setText(insurence.getI_id());
                 cmbmodel.setValue(vehicle.getModel());
                 cmbcolor.setValue(vehicle.getColur());
-                txtinsuranceStartDate.setText(insurence.getStdate());
-                txtinsuranceendDate.setText(insurence.getEnddate());
+                txtinsuranceStartDate.setValue(insurence.getStdate().toLocalDate());
+                txtinsuranceendDate.setValue(insurence.getEnddate().toLocalDate());
 
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -187,8 +210,10 @@ new Alert(Alert.AlertType.ERROR,"vehicle not delete").show();
     public void clear(){
         txtVehicleNumber.clear();
         txtInshurance.clear();
-        txtinsuranceStartDate.clear();
-        txtinsuranceendDate.clear();
+        txtinsuranceStartDate.setValue(null);
+        txtinsuranceendDate.setValue(null);
+        cmbcolor.setValue(null);
+        cmbmodel.setValue(null);
     }
 
     public void CelarVehicleDetails(ActionEvent actionEvent) {

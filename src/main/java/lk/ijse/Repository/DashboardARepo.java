@@ -24,7 +24,7 @@ public class DashboardARepo {
         return 0;
     }
 
-    public static int getCustomerCount(Dashboard dashboard) throws SQLException {
+    public static int getCustomerCount() throws SQLException {
         String sql = "select count(*) as CustomerCount from customer";
 
         Connection connection = DBConnection.getInstance().getConnection();

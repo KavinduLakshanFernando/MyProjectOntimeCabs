@@ -4,10 +4,7 @@ import lk.ijse.Database.DBConnection;
 import lk.ijse.Model.Insurence;
 import lk.ijse.Model.Vehicle;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class InsurenceRepo {
     public static String getCurrentId() throws SQLException {
@@ -44,8 +41,8 @@ public class InsurenceRepo {
 
         if (resultSet.next()){
             String iid = resultSet.getString(1);
-            String stdate = resultSet.getString(2);
-            String enddate = resultSet.getString(3);
+            Date stdate = resultSet.getDate(2);
+            Date enddate = resultSet.getDate(3);
             Insurence insurence =new Insurence(iid,stdate,enddate);
             return insurence;
         }

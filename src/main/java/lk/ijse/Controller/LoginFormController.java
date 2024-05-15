@@ -2,10 +2,10 @@ package lk.ijse.Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -13,6 +13,7 @@ import java.io.IOException;
 public class LoginFormController {
     public TextField txtUserName;
     public TextField txtPassword;
+    public AnchorPane rootNode;
 
     public void LoginFormOnAction(ActionEvent actionEvent) throws IOException {
         final String uname = "a";
@@ -23,7 +24,7 @@ public class LoginFormController {
 
         if(username.equals(uname)){
             if (password.equals(pass)){
-                navigateToDashboard();
+                navigateToDashboard((Stage) rootNode.getScene().getWindow());
             }
             else{
                 new Alert(Alert.AlertType.ERROR,"password Is wromng !!!").show();
@@ -33,12 +34,15 @@ public class LoginFormController {
         }
     }
 
-    private void navigateToDashboard() throws IOException {
-        Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/Dashboard.fxml"));
+    private void navigateToDashboard(Stage stage) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Dashboard.fxml"));
+        AnchorPane rootNode = loader.load();
+        DashboardController controller = loader.getController();
+        controller.initialize(); // Assuming you want to initialize the dashboard controller
+
         Scene scene = new Scene(rootNode);
-        Stage stage = new Stage();
         stage.setScene(scene);
-        stage.setTitle("Dashboard Form");
-        stage.show();
+        stage.centerOnScreen();
+        stage.setTitle("Dashboard");
     }
 }
