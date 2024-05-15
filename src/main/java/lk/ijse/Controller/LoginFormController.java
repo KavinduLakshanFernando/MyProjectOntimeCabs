@@ -14,6 +14,8 @@ public class LoginFormController {
     public TextField txtUserName;
     public TextField txtPassword;
 
+    public int k = 0;
+
     public void LoginFormOnAction(ActionEvent actionEvent) throws IOException {
         final String uname = "k";
         final String pass = "123";
