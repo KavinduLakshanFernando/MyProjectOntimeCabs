@@ -13,7 +13,7 @@ public class DBConnection {
 
     private DBConnection() throws SQLException {
         connection = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/ontimecabs",
+                "jdbc:mysql://localhost:3306/oneTimeCabs",
                 "root",
                 "Ijse@123"
         );

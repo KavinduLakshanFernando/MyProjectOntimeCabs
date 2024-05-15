@@ -14,13 +14,9 @@ public class LoginFormController {
     public TextField txtUserName;
     public TextField txtPassword;
 
-    public int k = 0;
-    public String ka = null;
-
-
     public void LoginFormOnAction(ActionEvent actionEvent) throws IOException {
-        final String uname = "k";
-        final String pass = "123";
+        final String uname = "a";
+        final String pass = "a";
 
         String username = txtUserName.getText();
         String password = txtPassword.getText();

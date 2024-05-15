@@ -162,4 +162,15 @@ public class DashboardController {
         }
     }
 
+    public void dashboardOnAction(ActionEvent actionEvent) throws IOException {
+        Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/LoginForm.fxml"));
+
+        Scene scene = new Scene(rootNode);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+
+        stage.setTitle("LoginForm");
+
+        stage.show();
+    }
 }

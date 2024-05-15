@@ -102,9 +102,15 @@ public class CustomerManageController {
         try {
             boolean isDeleted = CustomerRepo.delete(id);
             if (isDeleted) {
+                initialize();
                 new Alert(Alert.AlertType.CONFIRMATION, "customer deleted!").show();
-                loadCustomer();
+//                loadCustomer();
+
                 clear();
+
+
+
+//                tblCustomer.refresh();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -153,6 +159,8 @@ public class CustomerManageController {
         txtName.clear();
         txtAddress.clear();
         txtPhone.clear();
+
+        txtserchCustomer.clear();
 
     }
 }
