@@ -110,5 +110,6 @@
             <Font size="13.0" />
          </font>
       </Text>
+      <JFXButton buttonType="RAISED" layoutX="683.0" layoutY="306.0" onAction="#btnBillOnAction" prefHeight="29.0" prefWidth="78.0" style="-fx-background-color: #0466c8; -fx-background-radius: 20;" text="Bill" textFill="WHITE" />
    </children>
 </AnchorPane>

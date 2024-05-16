@@ -5,10 +5,7 @@ import lk.ijse.Model.Insurence;
 import lk.ijse.Model.TM.VehicleTMDetails;
 import lk.ijse.Model.Vehicle;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,9 +56,10 @@ public class VehicleRepo {
     }
 
     public static List<String> getIds() throws SQLException {
-        String sql ="select v_id from vehicle where status = 'active'";
-PreparedStatement pstm = DBConnection.getInstance().getConnection().prepareStatement(sql);
+        String sql ="select V_id from vehicle";
+        PreparedStatement pstm = DBConnection.getInstance().getConnection().prepareStatement(sql);
         ResultSet resultSet = pstm.executeQuery();
+
         List<String> codeList = new ArrayList<>();
         while (resultSet.next()){
             String id = resultSet.getString(1);
@@ -71,24 +69,27 @@ PreparedStatement pstm = DBConnection.getInstance().getConnection().prepareState
     }
 
     public static List<VehicleTMDetails> getAll() throws SQLException {
-        String sql = "SELECT * FROM vehicle INNER JOIN insurance ON vehicle.I_id = insurance.I_id WHERE Status ='Active';";
+        String sql = "SELECT vehicle.V_id, vehicle.I_id AS Insurance_ID, vehicle.Color, vehicle.Model, insurance.Start_date, insurance.End_date FROM vehicle JOIN insurance ON vehicle.I_id = insurance.I_id";
+
 
         Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         ResultSet resultSet = pstm.executeQuery();
         List<VehicleTMDetails> VehicleList = new ArrayList<>();
-
+//        +------+----------------+-------+------+-----------+
+//                | V_id | Model          | Color | I_id | Status    |
 
         while (resultSet.next()){
-            String Vid = resultSet.getString(1);
-            String Iid = resultSet.getString(4);
-            String Color = resultSet.getString(3);
-            String Model = resultSet.getString(2);
-            String SDate = resultSet.getString(7);
-            String EDate = resultSet.getString(8);
+            String vid = resultSet.getString(1);
+            String model = resultSet.getString(2);
+            String color = resultSet.getString(3);
+            String i_id = resultSet.getString(4);
+            Date startDate = resultSet.getDate(5);
+            Date endDate = resultSet.getDate(6);
 
-            VehicleTMDetails details = new VehicleTMDetails(Vid, Iid, Color, Model, SDate, EDate);
+
+            VehicleTMDetails details = new VehicleTMDetails(vid, model, color, i_id, startDate, endDate);
         VehicleList.add(details);
         }
         return VehicleList;

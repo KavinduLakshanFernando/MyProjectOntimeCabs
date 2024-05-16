@@ -54,7 +54,6 @@ public class ManageVehicleController {
     public void initialize() throws SQLException {
         setCellValues();
         loadAllVehicles();
-
         setCmbmodel();
         setCmbcolur();
         showSelectedUserDetails();
@@ -68,11 +67,10 @@ public class ManageVehicleController {
             txtInshurance.setText(selectedUser.getINumber());
             cmbcolor.setValue(selectedUser.getColor());
             cmbmodel.setValue(selectedUser.getModel());
-            txtinsuranceStartDate.setValue(LocalDate.parse(selectedUser.getStartDate()));
-            txtinsuranceendDate.setValue(LocalDate.parse(selectedUser.getEndDate()));
+            txtinsuranceStartDate.setValue(selectedUser.getStartDate().toLocalDate());
+            txtinsuranceendDate.setValue(selectedUser.getEndDate().toLocalDate());
         }
-    }
-
+    }   // සිලෙක්ට් කරාම ෆිල් වෙන එක
 
     public void loadAllVehicles() throws SQLException {
         ObservableList<VehicleTMDetails> obList = FXCollections.observableArrayList();
@@ -82,13 +80,13 @@ public class ManageVehicleController {
 
             for (VehicleTMDetails details : vehicleList){
                 obList.add(details);
-//                System.out.println(details);
             }
             VehicleTable.setItems(obList);
         }catch (SQLException e){
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
     }
+
     public void setCellValues(){
         VehicleNumberCol.setCellValueFactory(new PropertyValueFactory<>("VNumber"));
         InshuranceNumberCol.setCellValueFactory(new PropertyValueFactory<>("INumber"));
@@ -97,7 +95,6 @@ public class ManageVehicleController {
         StartDateCol.setCellValueFactory(new PropertyValueFactory<>("StartDate"));
         EndDateCol.setCellValueFactory(new PropertyValueFactory<>("EndDate"));
     }
-
 
     public void AddVehicleOnAction(ActionEvent actionEvent) {
         String vid = txtVehicleNumber.getText();
@@ -177,9 +174,6 @@ public class ManageVehicleController {
 
     }
 
-
-
-
     public void SearchvehicleOnAction(ActionEvent actionEvent) throws SQLException {
         String searchid = txtserchVehicle.getText();
 
@@ -204,6 +198,7 @@ public class ManageVehicleController {
             new Alert(Alert.AlertType.ERROR,"cant fimd this vehicle").show();
         }
     }
+
     public void clear(){
         txtVehicleNumber.clear();
         txtInshurance.clear();

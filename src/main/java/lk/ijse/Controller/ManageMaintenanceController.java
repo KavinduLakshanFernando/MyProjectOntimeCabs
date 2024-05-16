@@ -3,16 +3,17 @@ package lk.ijse.Controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXML;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ijse.Database.DBConnection;
+import lk.ijse.Model.Driver;
 import lk.ijse.Model.Maintenance;
 import lk.ijse.Model.Maintenance_Details;
-import lk.ijse.Repository.MaintenanceRepo;
-import lk.ijse.Repository.Maintenance_DetailsRepo;
-import lk.ijse.Repository.VehicleRepo;
+import lk.ijse.Model.TM.DriverTM;
+import lk.ijse.Model.TM.MaintenanceTM;
+import lk.ijse.Model.TM.ReservationTM;
+import lk.ijse.Repository.*;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -29,9 +30,97 @@ public class ManageMaintenanceController {
     public ComboBox Vehiclenumcmb;
 
 
+    @FXML
+    private TableView<MaintenanceTM> MaintenanceTable;
+
+    @FXML
+    private TableColumn<?, ?> vnumbercol;
+
+    @FXML
+    private TableColumn<?, ?> desccol;
+
+    @FXML
+    private TableColumn<?, ?> maintenancenumbercol;
+
+    @FXML
+    private TableColumn<?, ?> mcostcol;
+
+    @FXML
+    private TableColumn<?, ?> mdatecol;
+
+
     public void initialize(){
         getVehicleIds();
+        setCellValueFactory();
+        loadAllMaintenance();
+        getCurrentMaintenanceId();
+
     }
+    private void loadAllMaintenance() {
+        ObservableList<MaintenanceTM> obList = FXCollections.observableArrayList();
+
+        try {
+            List<MaintenanceTM> menList = MaintenanceRepo.getAll();
+            for (MaintenanceTM men : menList) {
+                MaintenanceTM tm = new MaintenanceTM(
+                        men.getV_id(),
+                        men.getM_id(),
+                        men.getDesc(),
+                        men.getDate(),
+                        men.getCost()
+                );
+                obList.add(tm);
+            }
+
+            MaintenanceTable.setItems(obList);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void getCurrentMaintenanceId() {
+        try {
+            String currentId = MaintenanceRepo.getCurrentId();
+
+            String nextMaintenanceId = generateNextMaintenanceid(currentId);
+            txtMaintenanceId.setText(nextMaintenanceId);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private String generateNextMaintenanceid(String currentId) {
+        if(currentId != null && !currentId.isEmpty()) {
+            String[] split = currentId.split("M");
+            if (split.length > 1) {
+                int idNum = Integer.parseInt(split[1]);
+                return "M0" + String.format("%02d", ++idNum);
+            }
+        }
+        return "M001"; // Default starting ID
+    }
+
+
+
+
+
+
+
+    private void setCellValueFactory() {
+        vnumbercol.setCellValueFactory(new PropertyValueFactory<>("V_id"));
+        maintenancenumbercol .setCellValueFactory(new PropertyValueFactory<>("M_id"));
+        desccol.setCellValueFactory(new PropertyValueFactory<>("desc"));
+        mdatecol.setCellValueFactory(new PropertyValueFactory<>("date"));
+        mcostcol.setCellValueFactory(new PropertyValueFactory<>("cost"));
+    }
+
+
+
+
+
+
+
     private void getVehicleIds() {
         ObservableList<String> obList = FXCollections.observableArrayList();
 

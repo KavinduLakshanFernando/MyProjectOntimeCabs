@@ -1,0 +1,184 @@
+drop database oneTimeCabs;
+
+create database oneTimeCabs;
+
+use oneTimeCabs;
+
+CREATE TABLE customer (
+    nic VARCHAR(50) NOT NULL PRIMARY KEY,
+    Name VARCHAR(50),
+    Address VARCHAR(100),
+    Tel VARCHAR(50)
+);
+
+CREATE TABLE driver (
+    D_id VARCHAR(50) NOT NULL PRIMARY KEY,
+    Name VARCHAR(50),
+    Address VARCHAR(100),
+    Tel VARCHAR(50),
+    V_id VARCHAR(50),
+    Status VARCHAR(50)
+);
+
+CREATE TABLE insurance (
+    I_id VARCHAR(50) NOT NULL PRIMARY KEY,
+    Start_date DATE NOT NULL,
+    End_date DATE NOT NULL
+);
+
+CREATE TABLE vehicle (
+    V_id VARCHAR(50) NOT NULL PRIMARY KEY,
+    Model VARCHAR(50),
+    Color VARCHAR(50),
+    I_id VARCHAR(50),
+    Status VARCHAR(255),
+    FOREIGN KEY (I_id) REFERENCES insurance(I_id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE maintenance (
+    M_id VARCHAR(50) NOT NULL PRIMARY KEY,
+    V_id VARCHAR(50),
+    Description VARCHAR(50),
+    Cost VARCHAR(50),
+    Date DATE,
+    FOREIGN KEY (V_id) REFERENCES vehicle(V_id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE service (
+    S_id VARCHAR(50) NOT NULL PRIMARY KEY,
+    S_type VARCHAR(50)
+);
+
+-- Inserting into service table
+INSERT INTO service (S_id, S_type) VALUES
+('S001', 'Car for hire'),
+('S002', 'Self driving'),
+('S003', 'Van for hire'),
+('S004', 'Bus for hire'),
+('S005', 'Wedding car service'),
+('S006', 'Airport drop and pickup');
+
+CREATE TABLE payment (
+    P_id VARCHAR(50) NOT NULL PRIMARY KEY,
+    Amount DECIMAL(10,2) NOT NULL,
+    Date DATE NOT NULL,
+    Payment_method VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE reservation (
+    Re_id VARCHAR(50) NOT NULL PRIMARY KEY,
+    P_id VARCHAR(50),
+    S_id VARCHAR(50),
+    nic VARCHAR(50),
+    FOREIGN KEY (P_id) REFERENCES payment(P_id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (S_id) REFERENCES service(S_id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (nic) REFERENCES customer(nic) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE reservation_details (
+    Re_id VARCHAR(50),
+    V_id VARCHAR(50),
+    Date DATE,
+    FOREIGN KEY (Re_id) REFERENCES reservation(Re_id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (V_id) REFERENCES vehicle(V_id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE maintenance_details (
+    V_id VARCHAR(50),
+    M_id VARCHAR(50),
+    FOREIGN KEY (V_id) REFERENCES vehicle(V_id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (M_id) REFERENCES maintenance(M_id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+
+show tables;
+
+
+
+
+-- Inserting into customer table
+INSERT INTO customer (nic, Name, Address, Tel) VALUES
+('1234567890', 'John Doe', '123 Main St, City', '123-456-7890'),
+('2345678901', 'Jane Smith', '456 Elm St, Town', '987-654-3210'),
+('3456789012', 'Bob Johnson', '789 Oak St, Village', '555-555-5555');
+
+-- Inserting into driver table
+INSERT INTO driver (D_id, Name, Address, Tel, V_id, Status) VALUES
+('D001', 'Mike Johnson', '123 First St, City', '111-111-1111', 'V001', 'Active'),
+('D002', 'Emily Brown', '456 Second St, Town', '222-222-2222', 'V002', 'Inactive'),
+('D003', 'Alex Wilson', '789 Third St, Village', '333-333-3333', 'V003', 'Active');
+
+-- Inserting into insurance table
+INSERT INTO insurance (I_id, Start_date, End_date) VALUES
+('I001', '2023-01-01', '2023-12-31'),
+('I002', '2023-02-01', '2023-12-31'),
+('I003', '2023-03-01', '2023-12-31');
+
+-- Inserting into vehicle table
+INSERT INTO vehicle (V_id, Model, Color, I_id, Status) VALUES
+('V001', 'Toyota Corolla', 'Blue', 'I001', 'Available'),
+('V002', 'Honda Civic', 'Red', 'I002', 'Rented'),
+('V003', 'Ford Explorer', 'Black', 'I003', 'Available');
+
+-- Inserting into maintenance table
+INSERT INTO maintenance (M_id, V_id, Description, Cost, Date) VALUES
+('M001', 'V001', 'Oil change', '50.00', '2023-01-15'),
+('M002', 'V002', 'Brake repair', '100.00', '2023-02-15'),
+('M003', 'V003', 'Tire rotation', '75.00', '2023-03-15');
+
+-- Inserting into service table (already provided in the CREATE TABLE statement)
+
+-- Inserting into payment table
+INSERT INTO payment (P_id, Amount, Date, Payment_method) VALUES
+('P001', '100.00', '2023-01-01', 'Credit Card'),
+('P002', '150.00', '2023-02-01', 'Cash'),
+('P003', '200.00', '2023-03-01', 'Debit Card');
+
+-- Inserting into reservation table
+INSERT INTO reservation (Re_id, P_id, S_id, nic) VALUES
+('R001', 'P001', 'S001', '1234567890'),
+('R002', 'P002', 'S002', '2345678901'),
+('R003', 'P003', 'S003', '3456789012');
+
+-- Inserting into reservation_details table
+INSERT INTO reservation_details (Re_id, V_id, Date) VALUES
+('R001', 'V001', '2023-01-05'),
+('R002', 'V002', '2023-02-10'),
+('R003', 'V003', '2023-03-15');
+
+-- Inserting into maintenance_details table (no sample data provided)
+
+
+
+-- Selecting all rows from the customer table
+SELECT * FROM customer;
+
+-- Selecting all rows from the driver table
+SELECT * FROM driver;
+
+-- Selecting all rows from the insurance table
+SELECT * FROM insurance;
+
+-- Selecting all rows from the vehicle table
+SELECT * FROM vehicle;
+
+-- Selecting all rows from the maintenance table
+SELECT * FROM maintenance;
+
+-- Selecting all rows from the service table
+SELECT * FROM service;
+
+-- Selecting all rows from the payment table
+SELECT * FROM payment;
+
+-- Selecting all rows from the reservation table
+SELECT * FROM reservation;
+
+-- Selecting all rows from the reservation_details table
+SELECT * FROM reservation_details;
+
+-- Selecting all rows from the maintenance_details table
+SELECT * FROM maintenance_details;
+
+
+

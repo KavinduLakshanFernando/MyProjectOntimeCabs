@@ -15,13 +15,19 @@ import lk.ijse.Model.Reservation_Details;
 import lk.ijse.Model.Service;
 import lk.ijse.Model.TM.ReservationTM;
 import lk.ijse.Repository.*;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 
@@ -105,25 +111,6 @@ public class ManageReservationController {
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     private void setCellValueFactory(){
         colAmount.setCellValueFactory(new PropertyValueFactory<>("amount"));
         colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
@@ -135,19 +122,6 @@ public class ManageReservationController {
         colPaymentType.setCellValueFactory(new PropertyValueFactory<>("paymentType"));
         colVehicleId.setCellValueFactory(new PropertyValueFactory<>("vehicleId"));
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     private void getCurrentReservationId() {
@@ -357,4 +331,25 @@ public class ManageReservationController {
         lblCustomerName.setText(null);
 
     }
+
+    public void btnBillOnAction(ActionEvent actionEvent) throws SQLException, JRException {
+        printBill();
+    }
+
+    private void printBill() throws JRException, SQLException {
+        JasperDesign jasperDesign = JRXmlLoader.load("src/main/resources/report/reservationKavindu1.jrxml");
+        JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+
+        Map<String, Object> data = new HashMap<>();
+        data.put("Re_id", reservationid.getText());
+
+        JasperPrint jasperPrint =
+                JasperFillManager.fillReport(jasperReport, data, DBConnection.getInstance().getConnection());
+        JasperViewer.viewReport(jasperPrint, false);
+    }
+
+
+
+
+
 }

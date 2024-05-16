@@ -13,6 +13,7 @@ import lk.ijse.Model.Customer;
 import lk.ijse.Model.TM.CustomerTM;
 import lk.ijse.Repository.CustomerRepo;
 import lk.ijse.Repository.ReservasionRepo;
+import lk.ijse.Util.Regex;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -47,8 +48,31 @@ public class CustomerManageController {
     }
 
 
+    public void nameKeyRelaseAction(javafx.scene.input.KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.Util.TextField.NAME, txtName);
+    }
+
+    public void nicKeyRelaseAction(javafx.scene.input.KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.Util.TextField.NIC, txtId);
+    }
+
+    public void addressKeyRelaseAction(javafx.scene.input.KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.Util.TextField.ADDRESS, txtAddress);
+    }
+
+    public void telKeyRelaseAction(javafx.scene.input.KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.Util.TextField.TEL, txtPhone);
+    }
 
 
+    public boolean isValied(){
+        boolean nameValid = Regex.setTextColor(lk.ijse.Util.TextField.NAME, txtName);
+        boolean nicValid = Regex.setTextColor(lk.ijse.Util.TextField.NIC, txtId);
+        boolean addressValid = Regex.setTextColor(lk.ijse.Util.TextField.ADDRESS, txtAddress);
+        boolean telValid = Regex.setTextColor(lk.ijse.Util.TextField.TEL, txtPhone);
+
+        return nameValid && nicValid && addressValid && telValid;
+    }
 
 
 
@@ -88,30 +112,38 @@ public class CustomerManageController {
     }
 
     public void SavebtnOnAction(ActionEvent actionEvent) throws SQLException {
-        String id = txtId.getText();
-        String name = txtName.getText();
-        String address = txtAddress.getText();
-        String phone = txtPhone.getText();
 
+        if(isValied()) {
+            String id = txtId.getText();
+            String name = txtName.getText();
+            String address = txtAddress.getText();
+            String phone = txtPhone.getText();
 
-
-        if (id.isEmpty() || name.isEmpty() || address.isEmpty() || phone.isEmpty()) {
-            new Alert(Alert.AlertType.ERROR, "Please fill in all fields!").show();
-            return;
-        }
-
-        Customer customer = new Customer(id, name, address, phone);
-        try {
-            boolean isSaved = CustomerRepo.save(customer);
-            if (isSaved) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Customer saved!").show();
-                loadCustomer();
-                clear();
-            } else {
-                new Alert(Alert.AlertType.ERROR, "Failed to save customer!").show();
+            if (id.isEmpty() || name.isEmpty() || address.isEmpty() || phone.isEmpty()) {
+                new Alert(Alert.AlertType.ERROR, "Please fill in all fields!").show();
+                return;
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+            Customer customer = new Customer(id, name, address, phone);
+            try {
+                boolean isSaved = CustomerRepo.save(customer);
+                if (isSaved) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Customer saved!").show();
+                    loadCustomer();
+                    clear();
+                } else {
+                    new Alert(Alert.AlertType.ERROR, "Failed to save customer!").show();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
+        } else {
+            // Show error message if validation fails
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Validation Error");
+            alert.setHeaderText("Validation Failed");
+            alert.setContentText("Please fill in all fields correctly.");
+            alert.showAndWait();
         }
 
     }
@@ -136,19 +168,28 @@ public class CustomerManageController {
         }
     }
 
-
     public void UpdatebtnOnAction(ActionEvent actionEvent) throws SQLException {
-        String id = txtId.getText();
-        String name = txtName.getText();
-        String address = txtAddress.getText();
-        String tel = txtPhone.getText();
+        if(isValied()) {
 
-        boolean isUpdated = CustomerRepo.update(new Customer(id, name, address,tel));
+            String id = txtId.getText();
+            String name = txtName.getText();
+            String address = txtAddress.getText();
+            String tel = txtPhone.getText();
 
-        if (isUpdated) {
-            new Alert(Alert.AlertType.CONFIRMATION, "Updated!").show();
-            loadCustomer();
-            clear();
+            boolean isUpdated = CustomerRepo.update(new Customer(id, name, address,tel));
+
+            if (isUpdated) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Updated!").show();
+                loadCustomer();
+                clear();
+            }
+        } else {
+            // Show error message if validation fails
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Validation Error");
+            alert.setHeaderText("Validation Failed");
+            alert.setContentText("Please fill in all fields correctly.");
+            alert.showAndWait();
         }
 
     }
@@ -156,7 +197,6 @@ public class CustomerManageController {
     public void ClearbtnOnAction(ActionEvent actionEvent) {
         clear();
     }
-
 
     public void SearchCustomerOnAction(ActionEvent actionEvent) throws SQLException {
         String id = txtserchCustomer.getText();
@@ -171,7 +211,6 @@ public class CustomerManageController {
             new Alert(Alert.AlertType.INFORMATION, "customer not found!").show();
         }
     }
-
 
     public void clear() {
         txtId.clear();

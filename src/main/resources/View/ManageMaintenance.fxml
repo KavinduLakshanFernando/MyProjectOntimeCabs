@@ -3,6 +3,8 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
@@ -51,5 +53,14 @@
       <JFXButton buttonType="RAISED" layoutX="632.0" layoutY="299.0" onAction="#ClearMaintenance" prefHeight="29.0" prefWidth="78.0" style="-fx-background-color: #0466c8; -fx-background-radius: 20;" text="Clear" textFill="WHITE" />
       <JFXButton buttonType="RAISED" layoutX="538.0" layoutY="299.0" onAction="#DeletMaintenance" prefHeight="29.0" prefWidth="78.0" style="-fx-background-color: #0466c8; -fx-background-radius: 20;" text="Delete" textFill="WHITE" />
       <JFXButton buttonType="RAISED" layoutX="445.0" layoutY="299.0" onAction="#SaveMaintenance" prefHeight="29.0" prefWidth="78.0" style="-fx-background-color: #0466c8; -fx-background-radius: 20;" text="Add" textFill="WHITE" />
+      <TableView fx:id="MaintenanceTable" layoutX="201.0" layoutY="382.0" prefHeight="299.0" prefWidth="782.0">
+        <columns>
+          <TableColumn fx:id="vnumbercol" prefWidth="122.26313781738281" text="Vehicle Number" />
+          <TableColumn fx:id="maintenancenumbercol" prefWidth="124.73684692382812" text="Mainteneance ID" />
+            <TableColumn fx:id="desccol" prefWidth="141.6107177734375" text="Description" />
+            <TableColumn fx:id="mdatecol" prefWidth="158.97882080078125" text="Date" />
+            <TableColumn fx:id="mcostcol" prefWidth="235.0211181640625" text="Cost" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>
