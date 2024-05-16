@@ -74,11 +74,6 @@ public class ManageVehicleController {
     }
 
 
-
-
-
-
-
     public void loadAllVehicles() throws SQLException {
         ObservableList<VehicleTMDetails> obList = FXCollections.observableArrayList();
 
@@ -87,7 +82,7 @@ public class ManageVehicleController {
 
             for (VehicleTMDetails details : vehicleList){
                 obList.add(details);
-                System.out.println(details);
+//                System.out.println(details);
             }
             VehicleTable.setItems(obList);
         }catch (SQLException e){
@@ -166,7 +161,7 @@ public class ManageVehicleController {
                connection.rollback();
            }
         } catch (SQLException e) {
-new Alert(Alert.AlertType.ERROR,"vehicle not delete").show();
+            new Alert(Alert.AlertType.ERROR,"vehicle not delete").show();
         }finally {
             connection.setAutoCommit(true);
         }
@@ -180,8 +175,10 @@ new Alert(Alert.AlertType.ERROR,"vehicle not delete").show();
         Date stsate = Date.valueOf(txtinsuranceStartDate.getValue());
         Date enddate = Date.valueOf(txtinsuranceendDate.getValue());
 
-
     }
+
+
+
 
     public void SearchvehicleOnAction(ActionEvent actionEvent) throws SQLException {
         String searchid = txtserchVehicle.getText();

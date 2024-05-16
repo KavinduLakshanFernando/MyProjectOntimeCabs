@@ -12,6 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ijse.Model.Customer;
 import lk.ijse.Model.TM.CustomerTM;
 import lk.ijse.Repository.CustomerRepo;
+import lk.ijse.Repository.ReservasionRepo;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -42,7 +43,25 @@ public class CustomerManageController {
     public void initialize(){
         setCellValues();
         loadCustomer();
+
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     private void loadCustomer(){
         ObservableList<CustomerTM> cusList = FXCollections.observableArrayList();
@@ -50,7 +69,7 @@ public class CustomerManageController {
             List<Customer> all = CustomerRepo.getAll();
             for (Customer customer : all){
 
-                CustomerTM cusTM = new CustomerTM(customer.getId(), customer.getName(), customer.getAddress(), customer.getPhone());
+                CustomerTM cusTM = new CustomerTM(customer.getNic(), customer.getName(), customer.getAddress(), customer.getTel());
                 cusList.add(cusTM);
                 tblCustomer.setItems(cusList);
 
@@ -144,10 +163,10 @@ public class CustomerManageController {
 
         Customer customer = CustomerRepo.search(id);
         if (customer != null) {
-            txtId.setText(customer.getId());
+            txtId.setText(customer.getNic());
             txtName.setText(customer.getName());
             txtAddress.setText(customer.getAddress());
-            txtPhone.setText(customer.getPhone());
+            txtPhone.setText(customer.getTel());
         } else {
             new Alert(Alert.AlertType.INFORMATION, "customer not found!").show();
         }

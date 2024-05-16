@@ -13,46 +13,41 @@
 
 <AnchorPane prefHeight="766.0" prefWidth="1125.0" style="-fx-background-color: #edf2fb;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.ManageVehicleController">
    <children>
-      <Rectangle arcHeight="30.0" arcWidth="30.0" fill="WHITE" height="239.0" layoutX="191.0" layoutY="97.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="744.0" />
-      <Text fill="#b9b9b9" layoutX="212.0" layoutY="124.0" stroke="MEDIUMBLUE" strokeType="OUTSIDE" strokeWidth="0.0" text="Vehicle Details :">
-         <font>
-            <Font name="System Bold" size="17.0" />
-         </font>
-      </Text>
-      <Text layoutX="247.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vehicle Number :">
+      <Rectangle arcHeight="30.0" arcWidth="30.0" fill="WHITE" height="288.0" layoutX="191.0" layoutY="48.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="744.0" />
+      <Text fill="#00000080" layoutX="247.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vehicle Number :">
          <font>
             <Font size="13.0" />
          </font>
       </Text>
       <ComboBox fx:id="cmbmodel" layoutX="250.0" layoutY="237.0" prefWidth="150.0" />
-      <Text layoutX="249.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mode :">
+      <Text fill="#00000080" layoutX="249.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mode :">
          <font>
             <Font size="13.0" />
          </font>
       </Text>
       <ComboBox fx:id="cmbcolor" layoutX="691.0" layoutY="157.0" prefWidth="150.0" />
-      <Text layoutX="691.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Color">
+      <Text fill="#00000080" layoutX="691.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Color">
          <font>
             <Font size="13.0" />
          </font>
       </Text>
-      <Text layoutX="474.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inshurance Number">
+      <Text fill="#00000080" layoutX="474.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inshurance ID">
          <font>
             <Font size="13.0" />
          </font>
       </Text>
-      <Text layoutX="473.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inshurance Start Date" wrappingWidth="125.22216796875">
+      <Text fill="#00000080" layoutX="473.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inshurance Start Date" wrappingWidth="125.22216796875">
          <font>
             <Font size="13.0" />
          </font>
       </Text>
-      <Text layoutX="690.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inshurance End Date">
+      <Text fill="#00000080" layoutX="690.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inshurance End Date">
          <font>
             <Font size="13.0" />
          </font>
       </Text>
       <TextField fx:id="txtInshurance" alignment="CENTER" layoutX="473.0" layoutY="157.0" />
-      <TextField fx:id="txtserchVehicle" layoutX="430.0" layoutY="21.0" onAction="#SearchvehicleOnAction" prefHeight="25.0" prefWidth="316.0" promptText="Search From Here" style="-fx-border-color: #0000cd;" />
+      <TextField fx:id="txtserchVehicle" layoutX="430.0" layoutY="91.0" onAction="#SearchvehicleOnAction" prefHeight="25.0" prefWidth="316.0" promptText="Search From Here" />
       <TextField fx:id="txtVehicleNumber" alignment="CENTER" layoutX="249.0" layoutY="156.0" />
       <TableView fx:id="VehicleTable" layoutX="79.0" layoutY="370.0" prefHeight="379.0" prefWidth="961.0">
         <columns>
@@ -70,5 +65,10 @@
       <JFXButton buttonType="RAISED" layoutX="588.0" layoutY="289.0" onAction="#DeleteVehicleOnAction" prefHeight="29.0" prefWidth="78.0" style="-fx-background-color: #0466c8; -fx-background-radius: 20;" text="Delete" textFill="WHITE" />
       <JFXButton buttonType="RAISED" layoutX="484.0" layoutY="289.0" onAction="#UpdateVehicleOnAction" prefHeight="29.0" prefWidth="78.0" style="-fx-background-color: #0466c8; -fx-background-radius: 20;" text="Update" textFill="WHITE" />
       <JFXButton buttonType="RAISED" layoutX="381.0" layoutY="289.0" onAction="#AddVehicleOnAction" prefHeight="29.0" prefWidth="78.0" style="-fx-background-color: #0466c8; -fx-background-radius: 20;" text="Add" textFill="WHITE" />
+      <Text fill="#00000072" layoutX="507.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vehicle Details">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

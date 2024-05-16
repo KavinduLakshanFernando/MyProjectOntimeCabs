@@ -12,6 +12,46 @@ import java.util.List;
 
 public class CustomerRepo {
 
+
+
+
+
+
+
+
+
+
+
+
+
+    public static String nicSearch(String nic) throws SQLException {
+        String sql = "SELECT Name FROM customer WHERE nic = ?";
+
+        Connection connection = DBConnection.getInstance().getConnection();
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setObject(1, nic);
+        ResultSet resultSet = pstm.executeQuery();
+
+
+
+        if(resultSet.next()) {
+            String cusName = resultSet.getString(1);
+
+            return cusName;
+        }
+        return null;
+    }
+
+
+
+
+
+
+
+
+
+
+
     public static  List<Customer> getAll() throws SQLException {
         String sql  ="select * from customer";
 
@@ -38,10 +78,10 @@ public class CustomerRepo {
         String sql ="insert into customer values(?,?,?,?)";
         Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement pstm = connection.prepareStatement(sql);
-        pstm.setObject(1, customer.getId());
+        pstm.setObject(1, customer.getNic());
         pstm.setObject(2, customer.getName());
         pstm.setObject(3, customer.getAddress());
-        pstm.setObject(4, customer.getPhone());
+        pstm.setObject(4, customer.getTel());
 
         return pstm.executeUpdate() > 0;
     }
@@ -65,8 +105,8 @@ public class CustomerRepo {
         PreparedStatement pstm = connection.prepareStatement(sql);
         pstm.setObject(1, customer.getName());
         pstm.setObject(2, customer.getAddress());
-        pstm.setObject(3, customer.getPhone());
-        pstm.setObject(4, customer.getId());
+        pstm.setObject(3, customer.getTel());
+        pstm.setObject(4, customer.getNic());
 
         return pstm.executeUpdate() > 0;
     }

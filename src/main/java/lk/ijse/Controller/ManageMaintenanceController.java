@@ -62,25 +62,26 @@ public class ManageMaintenanceController {
 
         Connection connection = DBConnection.getInstance().getConnection();
         connection.setAutoCommit(false);
-try {
-    boolean issaved = MaintenanceRepo.save(maintenance);
-    if (issaved){
-        boolean issaved2 = Maintenance_DetailsRepo.save(maintenanceDetails);
-        if (issaved2){
-            connection.commit();
-            new Alert(Alert.AlertType.CONFIRMATION,"all data saved").show();
-        }else {
+
+        try {
+            boolean issaved = MaintenanceRepo.save(maintenance);
+            if (issaved){
+                boolean issaved2 = Maintenance_DetailsRepo.save(maintenanceDetails);
+                if (issaved2){
+                    connection.commit();
+                    new Alert(Alert.AlertType.CONFIRMATION,"all data saved").show();
+                }else {
+                    connection.rollback();
+                }
+            }else {
+                connection.rollback();
+            }
+        }catch (Exception e){
             connection.rollback();
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        }finally{
+            connection.setAutoCommit(true);
         }
-    }else {
-        connection.rollback();
-    }
-}catch (Exception e){
-    connection.rollback();
-    new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
-}finally{
-    connection.setAutoCommit(true);
-}
     }
 
     public void DeletMaintenance(ActionEvent actionEvent) {

@@ -33,16 +33,17 @@ public class DashboardController {
             // Load mainDashboard_form.fxml
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/MainDashboard.fxml"));
             AnchorPane mainDashboard = loader.load();
-
-            // Replace the children of rootNode with the loaded content
             rootNode.getChildren().setAll(mainDashboard);
-            Stage stage = (Stage) rootNode.getScene().getWindow();
-            stage.setTitle("Dashboard");
+            Scene scene = rootNode.getScene();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+
+
+
 
     public void ManageCustomerOnAction(ActionEvent actionEvent) throws IOException {
         URL resource = getClass().getResource("/view/CustomerManage.fxml");

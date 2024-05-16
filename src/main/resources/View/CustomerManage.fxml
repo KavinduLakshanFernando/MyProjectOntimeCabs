@@ -12,28 +12,23 @@
 <AnchorPane fx:id="rootNode" prefHeight="766.0" prefWidth="1125.0" style="-fx-background-color: #edf2fb;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.CustomerManageController">
    <children>
       <Rectangle arcHeight="30.0" arcWidth="30.0" fill="WHITE" height="298.0" layoutX="279.0" layoutY="23.0" strokeType="INSIDE" width="569.0" />
-      <Text fill="#080894" layoutX="505.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer Details">
-         <font>
-            <Font name="System Bold" size="17.0" />
-         </font>
-      </Text>
-      <Text layoutX="348.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIC Number :">
+      <Text fill="#00000082" layoutX="348.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIC Number :">
          <font>
             <Font size="13.0" />
          </font>
       </Text>
       <TextField fx:id="txtId" layoutX="349.0" layoutY="144.0" />
-      <Text layoutX="620.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name :">
+      <Text fill="#00000081" layoutX="620.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name :">
          <font>
             <Font size="13.0" />
          </font>
       </Text>
-      <Text layoutX="351.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address :">
+      <Text fill="#00000081" layoutX="351.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address :">
          <font>
             <Font size="13.0" />
          </font>
       </Text>
-      <Text layoutX="620.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact :">
+      <Text fill="#00000081" layoutX="620.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact :">
          <font>
             <Font size="13.0" />
          </font>
@@ -41,7 +36,7 @@
       <TextField fx:id="txtName" layoutX="621.0" layoutY="144.0" />
       <TextField fx:id="txtPhone" layoutX="621.0" layoutY="204.0" />
       <TextField fx:id="txtAddress" layoutX="349.0" layoutY="204.0" />
-      <TextField fx:id="txtserchCustomer" layoutX="436.0" layoutY="68.0" onAction="#SearchCustomerOnAction" prefHeight="25.0" prefWidth="316.0" promptText="Search From Here" style="-fx-border-color: #080894;" />
+      <TextField fx:id="txtserchCustomer" layoutX="436.0" layoutY="72.0" onAction="#SearchCustomerOnAction" prefHeight="25.0" prefWidth="316.0" promptText="Search From Here" />
       <TableView fx:id="tblCustomer" layoutX="121.0" layoutY="349.0" prefHeight="384.0" prefWidth="883.0">
         <columns>
           <TableColumn fx:id="niccol" prefWidth="186.4336166381836" text="NIC" />
@@ -54,5 +49,10 @@
       <JFXButton buttonType="RAISED" layoutX="588.0" layoutY="259.0" onAction="#DeletebtnOnAction" prefHeight="29.0" prefWidth="78.0" style="-fx-background-color: #0466c8; -fx-background-radius: 20;" text="Delete" textFill="WHITE" />
       <JFXButton buttonType="RAISED" layoutX="484.0" layoutY="259.0" onAction="#UpdatebtnOnAction" prefHeight="29.0" prefWidth="78.0" style="-fx-background-color: #0466c8; -fx-background-radius: 20;" text="Update" textFill="WHITE" />
       <JFXButton buttonType="RAISED" layoutX="381.0" layoutY="259.0" onAction="#SavebtnOnAction" prefHeight="29.0" prefWidth="78.0" style="-fx-background-color: #0466c8; -fx-background-radius: 20;" text="Add" textFill="WHITE" />
+      <Text fill="#00000072" layoutX="503.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer Details">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

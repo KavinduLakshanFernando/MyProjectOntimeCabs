@@ -24,16 +24,6 @@
             <Font name="System Bold Italic" size="27.0" />
          </font>
       </Label>
-      <Text fill="#5e5e5e" layoutX="26.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OnTime Cabs" wrappingWidth="181.890625">
-         <font>
-            <Font name="System Bold Italic" size="29.0" />
-         </font>
-      </Text>
-      <Text fill="#5e5e5e" layoutX="29.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Destination A Second Away" wrappingWidth="349.890625">
-         <font>
-            <Font name="System Bold Italic" size="17.0" />
-         </font>
-      </Text>
       <Text fill="#00000060" layoutX="81.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Customers">
          <font>
             <Font name="System Bold Italic" size="24.0" />

@@ -3,19 +3,21 @@ package lk.ijse.Controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXML;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import lk.ijse.Database.DBConnection;
 import lk.ijse.Model.Payment;
 import lk.ijse.Model.Reservation;
 import lk.ijse.Model.Reservation_Details;
 import lk.ijse.Model.Service;
+import lk.ijse.Model.TM.ReservationTM;
 import lk.ijse.Repository.*;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -36,11 +38,179 @@ public class ManageReservationController {
     public DatePicker PaymentDate;
     public DatePicker ReservationDate;
     public Rectangle ReservationType;
+    public Text lblCustomerName;
+
+    @FXML
+    private TableView<ReservationTM> tblReservation;
+
+    @FXML
+    private TableColumn<?, ?> colAmount;
+
+    @FXML
+    private TableColumn<?, ?> colCustomerName;
+
+    @FXML
+    private TableColumn<?, ?> colCustomerNic;
+
+    @FXML
+    private TableColumn<?, ?> colDate;
+
+    @FXML
+    private TableColumn<?, ?> colPaymentId;
+
+    @FXML
+    private TableColumn<?, ?> colPaymentType;
+
+    @FXML
+    private TableColumn<?, ?> colReservationId;
+
+    @FXML
+    private TableColumn<?, ?> colServiceType;
+
+    @FXML
+    private TableColumn<?, ?> colVehicleId;
 
     public void initialize(){
         getVehicleCmbValues();
         setPaymentType();
         setServiceCmb();
+        getCurrentReservationId();
+        setCellValueFactory();
+        loadAllReservation();
+    }
+
+    private void loadAllReservation() {
+        ObservableList<ReservationTM> obList = FXCollections.observableArrayList();
+
+        try {
+            List<ReservationTM> resList = ReservasionRepo.getAll();
+            for (ReservationTM res : resList) {
+                ReservationTM tm = new ReservationTM(
+                        res.getRe_id(),
+                        res.getP_id(),
+                        res.getVehicleId(),
+                        res.getServiceType(),
+                        res.getCusNic(),
+                        res.getName(),
+                        res.getAmount(),
+                        res.getPaymentType(),
+                        res.getDate()
+                );
+                obList.add(tm);
+            }
+
+            tblReservation.setItems(obList);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    private void setCellValueFactory(){
+        colAmount.setCellValueFactory(new PropertyValueFactory<>("amount"));
+        colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+        colCustomerName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colPaymentId.setCellValueFactory(new PropertyValueFactory<>("P_id"));
+        colReservationId.setCellValueFactory(new PropertyValueFactory<>("Re_id"));
+        colServiceType.setCellValueFactory(new PropertyValueFactory<>("serviceType"));
+        colCustomerNic.setCellValueFactory(new PropertyValueFactory<>("cusNic"));
+        colPaymentType.setCellValueFactory(new PropertyValueFactory<>("paymentType"));
+        colVehicleId.setCellValueFactory(new PropertyValueFactory<>("vehicleId"));
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    private void getCurrentReservationId() {
+        try {
+            String currentId = ReservasionRepo.getCurrentId();
+
+            String nextReservationId = generateNextReservationId(currentId);
+            reservationid.setText(nextReservationId);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private String generateNextReservationId(String currentId) {
+        if(currentId != null && !currentId.isEmpty()) {
+            String[] split = currentId.split("R");
+            if (split.length > 1) {
+                int idNum = Integer.parseInt(split[1]);
+                return "R0" + String.format("%02d", ++idNum);
+            }
+        }
+        return "R001"; // Default starting ID
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public void btnCusNicSearchOnAction(ActionEvent actionEvent) throws SQLException {
+        String nic = customerNic.getText();
+
+//        if (isSearchNicValied()) {
+
+            String  name = CustomerRepo.nicSearch(nic);
+            if (name != null) {
+                lblCustomerName.setText(name);
+            } else {
+                new Alert(Alert.AlertType.INFORMATION, "customer not found!").show();
+            }
+//        } else {
+//            // Show error message if validation fails
+//            Alert alert = new Alert(Alert.AlertType.ERROR);
+//            alert.setTitle("Validation Error");
+//            alert.setHeaderText("Validation Failed");
+//            alert.setContentText("Please fill in all fields correctly.");
+//            alert.showAndWait();
+//        }
     }
 
     private void setServiceCmb() {
@@ -57,7 +227,6 @@ public class ManageReservationController {
             throw new RuntimeException(e);
         }
     }
-
 
     private void getVehicleCmbValues() {
         ObservableList<String> obList = FXCollections.observableArrayList();
@@ -105,6 +274,8 @@ public class ManageReservationController {
                 if (issaved2){
                     boolean issaved3 = Reservation_DetailsRepo.savedata(reservationDetails);
                     if (issaved3){
+                        clear();
+                        initialize();
                         new Alert(Alert.AlertType.CONFIRMATION,"Data Saved").show();
                         connection.commit();
                     }else {
@@ -177,5 +348,13 @@ public class ManageReservationController {
         customerNic.clear();
         txtSearchReservation.clear();
         PaymentAmount.clear();
+
+        ServiceCmb.setValue(null);
+        vehicleNumbercmb.setValue(null);
+        ReservationDate.setValue(null);
+        paymentMethodcmb.setValue(null);
+        PaymentDate.setValue(null);
+        lblCustomerName.setText(null);
+
     }
 }
