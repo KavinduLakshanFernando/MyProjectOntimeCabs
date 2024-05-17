@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 
 public class Maintenance {
     private String M_id;
+    private String V_id;
     private String Description;
     private String cost;
     private String date;

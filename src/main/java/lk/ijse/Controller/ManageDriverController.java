@@ -101,10 +101,10 @@ public class ManageDriverController {
         try{
             boolean issaved = DriverRepo.save(driver);
             if (issaved){
-                new Alert(Alert.AlertType.CONFIRMATION,"driver detail saved").show();
+                new Alert(Alert.AlertType.CONFIRMATION,"Driver Is Saved").show();
                 loadAllDrivers();
             }else {
-                new Alert(Alert.AlertType.ERROR,"driver not saved").show();
+                new Alert(Alert.AlertType.ERROR,"Driver Not Saved").show();
             }
         }catch (Exception e){
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
@@ -117,13 +117,13 @@ public class ManageDriverController {
         try {
             boolean isdeleted = DriverRepo.delete(id);
             if (isdeleted){
-                new Alert(Alert.AlertType.CONFIRMATION,"driver deleted").show();
+                new Alert(Alert.AlertType.CONFIRMATION,"Driver Is Deleted").show();
                 loadAllDrivers();
             }else{
-                new Alert(Alert.AlertType.ERROR,"cant delete this driver").show();
+                new Alert(Alert.AlertType.ERROR,"Driver Not Delete").show();
             }
         }catch (Exception e){
-            new Alert(Alert.AlertType.ERROR,"cant delete this driver").show();
+            new Alert(Alert.AlertType.ERROR,"Cant Delete This Driver").show();
         }
     }
 
@@ -139,10 +139,10 @@ public class ManageDriverController {
         try{
             boolean issaved = DriverRepo.update(driver);
             if (issaved){
-                new Alert(Alert.AlertType.CONFIRMATION,"driver detail saved").show();
+                new Alert(Alert.AlertType.CONFIRMATION,"Driver Is Update").show();
                 loadAllDrivers();
             }else {
-                new Alert(Alert.AlertType.ERROR,"driver not saved").show();
+                new Alert(Alert.AlertType.ERROR,"Driver Not Update").show();
             }
         }catch (Exception e){
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();

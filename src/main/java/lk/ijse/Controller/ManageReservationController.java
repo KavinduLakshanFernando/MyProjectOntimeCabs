@@ -147,29 +147,8 @@ public class ManageReservationController {
         return "R001"; // Default starting ID
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public void btnCusNicSearchOnAction(ActionEvent actionEvent) throws SQLException {
         String nic = customerNic.getText();
-
-//        if (isSearchNicValied()) {
 
             String  name = CustomerRepo.nicSearch(nic);
             if (name != null) {
@@ -177,16 +156,7 @@ public class ManageReservationController {
             } else {
                 new Alert(Alert.AlertType.INFORMATION, "customer not found!").show();
             }
-//        } else {
-//            // Show error message if validation fails
-//            Alert alert = new Alert(Alert.AlertType.ERROR);
-//            alert.setTitle("Validation Error");
-//            alert.setHeaderText("Validation Failed");
-//            alert.setContentText("Please fill in all fields correctly.");
-//            alert.showAndWait();
-//        }
     }
-
     private void setServiceCmb() {
         ObservableList<String> obList = FXCollections.observableArrayList();
 
@@ -217,7 +187,7 @@ public class ManageReservationController {
 
     private void setPaymentType() {
         ObservableList<String> colurlist = FXCollections.observableArrayList(
-                "Cash", "credit", "debit", "check"
+                "Cash", "Credit", "Debit", "Check"
         );
         paymentMethodcmb.setItems(colurlist);
     }
@@ -286,6 +256,7 @@ public class ManageReservationController {
                 if(isdelete2){
                     connection.commit();
                     new Alert(Alert.AlertType.CONFIRMATION,"Reservation deleted").show();
+                    loadAllReservation();
                 }
             }else {
                 connection.rollback();
@@ -343,13 +314,7 @@ public class ManageReservationController {
         Map<String, Object> data = new HashMap<>();
         data.put("Re_id", reservationid.getText());
 
-        JasperPrint jasperPrint =
-                JasperFillManager.fillReport(jasperReport, data, DBConnection.getInstance().getConnection());
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, data, DBConnection.getInstance().getConnection());
         JasperViewer.viewReport(jasperPrint, false);
     }
-
-
-
-
-
 }

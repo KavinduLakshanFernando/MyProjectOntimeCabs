@@ -47,7 +47,6 @@ public class CustomerManageController {
 
     }
 
-
     public void nameKeyRelaseAction(javafx.scene.input.KeyEvent keyEvent) {
         Regex.setTextColor(lk.ijse.Util.TextField.NAME, txtName);
     }
@@ -73,19 +72,6 @@ public class CustomerManageController {
 
         return nameValid && nicValid && addressValid && telValid;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     private void loadCustomer(){
         ObservableList<CustomerTM> cusList = FXCollections.observableArrayList();
@@ -120,18 +106,18 @@ public class CustomerManageController {
             String phone = txtPhone.getText();
 
             if (id.isEmpty() || name.isEmpty() || address.isEmpty() || phone.isEmpty()) {
-                new Alert(Alert.AlertType.ERROR, "Please fill in all fields!").show();
+                new Alert(Alert.AlertType.ERROR, "Please Fill In All Fields!").show();
                 return;
             }
             Customer customer = new Customer(id, name, address, phone);
             try {
                 boolean isSaved = CustomerRepo.save(customer);
                 if (isSaved) {
-                    new Alert(Alert.AlertType.CONFIRMATION, "Customer saved!").show();
+                    new Alert(Alert.AlertType.CONFIRMATION, "Customer Saved!").show();
                     loadCustomer();
                     clear();
                 } else {
-                    new Alert(Alert.AlertType.ERROR, "Failed to save customer!").show();
+                    new Alert(Alert.AlertType.ERROR, "Customer Not Saved").show();
                 }
             } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -154,7 +140,7 @@ public class CustomerManageController {
             boolean isDeleted = CustomerRepo.delete(id);
             if (isDeleted) {
                 initialize();
-                new Alert(Alert.AlertType.CONFIRMATION, "customer deleted!").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "Customer Deleted!").show();
 //                loadCustomer();
 
                 clear();
@@ -179,7 +165,7 @@ public class CustomerManageController {
             boolean isUpdated = CustomerRepo.update(new Customer(id, name, address,tel));
 
             if (isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Updated!").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "Customer Updated!").show();
                 loadCustomer();
                 clear();
             }
@@ -208,7 +194,7 @@ public class CustomerManageController {
             txtAddress.setText(customer.getAddress());
             txtPhone.setText(customer.getTel());
         } else {
-            new Alert(Alert.AlertType.INFORMATION, "customer not found!").show();
+            new Alert(Alert.AlertType.INFORMATION, "Customer Not Found!").show();
         }
     }
 

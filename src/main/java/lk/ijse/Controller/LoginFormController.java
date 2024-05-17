@@ -27,10 +27,10 @@ public class LoginFormController {
                 navigateToDashboard((Stage) rootNode.getScene().getWindow());
             }
             else{
-                new Alert(Alert.AlertType.ERROR,"password Is wromng !!!").show();
+                new Alert(Alert.AlertType.ERROR,"Password Is Wrong !!!").show();
             }
             }else{
-            new Alert(Alert.AlertType.ERROR,"user name wrong !!!").show();
+            new Alert(Alert.AlertType.ERROR,"User Name Is Wrong !!!").show();
         }
     }
 

@@ -70,7 +70,7 @@ public class ManageVehicleController {
             txtinsuranceStartDate.setValue(selectedUser.getStartDate().toLocalDate());
             txtinsuranceendDate.setValue(selectedUser.getEndDate().toLocalDate());
         }
-    }   // සිලෙක්ට් කරාම ෆිල් වෙන එක
+    }
 
     public void loadAllVehicles() throws SQLException {
         ObservableList<VehicleTMDetails> obList = FXCollections.observableArrayList();
@@ -111,11 +111,11 @@ public class ManageVehicleController {
        try {
            boolean issaved = VehicleRegister.regiVehicle(insurence,vehicle);
           if(issaved){
-             new Alert(Alert.AlertType.CONFIRMATION,"data saved").show();
+             new Alert(Alert.AlertType.CONFIRMATION,"Vehicle Saved").show();
              loadAllVehicles();
              clear();
           }else{
-              new Alert(Alert.AlertType.ERROR,"data not saved").show();
+              new Alert(Alert.AlertType.ERROR,"Vehicle Not Saved").show();
           }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
@@ -124,7 +124,7 @@ public class ManageVehicleController {
 
     private void setCmbmodel() {
         ObservableList<String> modellist = FXCollections.observableArrayList(
-                "suzuki Alto", "Wagon R", "Suzuki Spacia", "Toyota Vitz","Toyota Aqua","Toyota Priys"
+                "Suzuki Alto", "Wagon R", "Suzuki Spacia", "Toyota Vitz","Toyota Aqua","Toyota Priys"
                 ,"Toyota Axio","Toyot Premio","Honda Vezel","Toyota KDH"
         );
 
@@ -133,7 +133,7 @@ public class ManageVehicleController {
 
     private void setCmbcolur() {
         ObservableList<String> colurlist = FXCollections.observableArrayList(
-                "white", "red", "black", "blue"
+                "White", "Red", "Black", "Blue","Green"
         );
 
         cmbcolor.setItems(colurlist);
@@ -151,28 +151,19 @@ public class ManageVehicleController {
                boolean isdelete2 = InsurenceRepo.delete(iid);
                if (isdelete2){
                    connection.commit();
-                   new Alert(Alert.AlertType.CONFIRMATION,"vehicle deleted").show();
+                   new Alert(Alert.AlertType.CONFIRMATION,"Vehicle Deleted").show();
                    loadAllVehicles();
                }
            }else {
                connection.rollback();
            }
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,"vehicle not delete").show();
+            new Alert(Alert.AlertType.ERROR,"Vehicle Not Delete").show();
         }finally {
             connection.setAutoCommit(true);
         }
     }
 
-    public void UpdateVehicleOnAction(ActionEvent actionEvent) {
-        String vid = txtVehicleNumber.getText();
-        String iId = txtInshurance.getText();
-        String model = cmbmodel.getValue();
-        String colur = cmbcolor.getValue();
-        Date stsate = Date.valueOf(txtinsuranceStartDate.getValue());
-        Date enddate = Date.valueOf(txtinsuranceendDate.getValue());
-
-    }
 
     public void SearchvehicleOnAction(ActionEvent actionEvent) throws SQLException {
         String searchid = txtserchVehicle.getText();
@@ -195,7 +186,7 @@ public class ManageVehicleController {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
         }else {
-            new Alert(Alert.AlertType.ERROR,"cant fimd this vehicle").show();
+            new Alert(Alert.AlertType.ERROR,"Cant Find This Vehicle").show();
         }
     }
 

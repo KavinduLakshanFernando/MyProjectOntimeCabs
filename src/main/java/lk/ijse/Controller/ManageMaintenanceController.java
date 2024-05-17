@@ -101,12 +101,6 @@ public class ManageMaintenanceController {
         return "M001"; // Default starting ID
     }
 
-
-
-
-
-
-
     private void setCellValueFactory() {
         vnumbercol.setCellValueFactory(new PropertyValueFactory<>("V_id"));
         maintenancenumbercol .setCellValueFactory(new PropertyValueFactory<>("M_id"));
@@ -114,12 +108,6 @@ public class ManageMaintenanceController {
         mdatecol.setCellValueFactory(new PropertyValueFactory<>("date"));
         mcostcol.setCellValueFactory(new PropertyValueFactory<>("cost"));
     }
-
-
-
-
-
-
 
     private void getVehicleIds() {
         ObservableList<String> obList = FXCollections.observableArrayList();
@@ -146,7 +134,7 @@ public class ManageMaintenanceController {
         String desc = txtDesc.getText();
         String mdate = String.valueOf(MaintenanceDate.getValue());
 
-        Maintenance maintenance = new Maintenance(mid, desc, cost, mdate);
+        Maintenance maintenance = new Maintenance(mid,vid, desc, cost, mdate);
         Maintenance_Details maintenanceDetails = new Maintenance_Details(vid, mid);
 
         Connection connection = DBConnection.getInstance().getConnection();
@@ -158,7 +146,8 @@ public class ManageMaintenanceController {
                 boolean issaved2 = Maintenance_DetailsRepo.save(maintenanceDetails);
                 if (issaved2){
                     connection.commit();
-                    new Alert(Alert.AlertType.CONFIRMATION,"all data saved").show();
+                    new Alert(Alert.AlertType.CONFIRMATION,"Maintenance Data Saved").show();
+                    loadAllMaintenance();
                 }else {
                     connection.rollback();
                 }
@@ -178,9 +167,10 @@ public class ManageMaintenanceController {
         try {
             boolean isdelete = MaintenanceRepo.delete(mid);
            if (isdelete){
-               new Alert(Alert.AlertType.CONFIRMATION,"mantanence deleted").show();
+               new Alert(Alert.AlertType.CONFIRMATION,"Delete Maintenance Data").show();
+               loadAllMaintenance();
            }else {
-               new Alert(Alert.AlertType.ERROR,"mantanence not deleted").show();
+               new Alert(Alert.AlertType.ERROR,"Not Delete Maintenance Data").show();
 
            }
         }catch (Exception e){
@@ -217,7 +207,7 @@ public class ManageMaintenanceController {
                 MaintenanceDate.setValue(LocalDate.parse(maintenance.getDate()));
             }
         }else {
-            new Alert(Alert.AlertType.ERROR,"vant find this maintenence").show();
+            new Alert(Alert.AlertType.ERROR,"Cant Find This Maintenence").show();
         }
 
 

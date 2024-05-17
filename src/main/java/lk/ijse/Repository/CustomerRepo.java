@@ -89,7 +89,7 @@ public class CustomerRepo {
 
 
     public static boolean delete(String id) throws SQLException {
-        String sql = "DELETE FROM customer WHERE Cu_id = ?";
+        String sql = "DELETE FROM customer WHERE nic = ?";
 
         Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement pstm = connection.prepareStatement(sql);
@@ -99,7 +99,7 @@ public class CustomerRepo {
     }
 
     public static boolean update(Customer customer) throws SQLException {
-        String sql = "UPDATE customer SET Name = ?, Address = ?, Tel = ? WHERE Cu_id = ?";
+        String sql = "UPDATE customer SET Name = ?, Address = ?, Tel = ? WHERE nic = ?";
 
         Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement pstm = connection.prepareStatement(sql);
@@ -112,7 +112,7 @@ public class CustomerRepo {
     }
 
     public static Customer search(String id) throws SQLException {
-        String sql = "SELECT * FROM customer WHERE Cu_id = ?";
+        String sql = "SELECT * FROM customer WHERE nic = ?";
 
         Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement pstm = connection.prepareStatement(sql);
