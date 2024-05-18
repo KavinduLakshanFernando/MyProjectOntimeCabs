@@ -63,7 +63,6 @@ public class CustomerManageController {
         Regex.setTextColor(lk.ijse.Util.TextField.TEL, txtPhone);
     }
 
-
     public boolean isValied(){
         boolean nameValid = Regex.setTextColor(lk.ijse.Util.TextField.NAME, txtName);
         boolean nicValid = Regex.setTextColor(lk.ijse.Util.TextField.NIC, txtId);

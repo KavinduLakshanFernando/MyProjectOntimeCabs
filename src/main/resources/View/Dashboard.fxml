@@ -9,7 +9,7 @@
 
 <AnchorPane fx:id="nodePane" prefHeight="650.0" prefWidth="1000.0" style="-fx-background-color: #0d47a1;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.DashboardController">
    <children>
-      <AnchorPane fx:id="rootNode" layoutX="240.0" prefHeight="766.0" prefWidth="1125.0" style="-fx-background-color: #edf2fb;" />
+      <AnchorPane fx:id="rootNode" layoutX="240.0" prefHeight="766.0" prefWidth="1125.0" style="-fx-background-color: #abc4ff;" />
       <Button layoutX="80.0" layoutY="606.0" mnemonicParsing="false" onAction="#logoutOnAction" prefHeight="33.0" prefWidth="79.0" style="-fx-background-color: #edf2fb; -fx-background-radius: 20;" text="Logout">
          <font>
             <Font name="System Bold" size="13.0" />
