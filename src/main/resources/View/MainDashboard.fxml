@@ -8,13 +8,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="766.0" prefWidth="1125.0" style="-fx-background-color: #abc4ff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.MainDashboardController">
+<AnchorPane prefHeight="766.0" prefWidth="1125.0" style="-fx-background-color: #AFDCEC;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.MainDashboardController">
    <children>
       <Rectangle arcHeight="30.0" arcWidth="30.0" fill="WHITE" height="132.0" layoutX="600.0" layoutY="112.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="208.0" />
       <Rectangle arcHeight="30.0" arcWidth="30.0" fill="WHITE" height="132.0" layoutX="860.0" layoutY="112.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="208.0" />
       <Rectangle arcHeight="30.0" arcWidth="30.0" fill="WHITE" height="132.0" layoutX="330.0" layoutY="112.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="208.0" />
       <Rectangle arcHeight="30.0" arcWidth="30.0" fill="WHITE" height="132.0" layoutX="60.0" layoutY="112.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="208.0" />
-      <Text fill="#8383838f" layoutX="70.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboard :">
+      <Text fill="#8282828f" layoutX="70.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboard :">
          <font>
             <Font name="System Bold Italic" size="26.0" />
          </font>
@@ -54,7 +54,7 @@
             <Font name="System Bold" size="37.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="30.0" arcWidth="30.0" fill="WHITE" height="423.0" layoutX="48.0" layoutY="318.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1031.0" />
+      <Rectangle arcHeight="30.0" arcWidth="30.0" fill="WHITE" height="423.0" layoutX="48.0" layoutY="318.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="1031.0" />
       <Text fill="#00000060" layoutX="341.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Reservations">
          <font>
             <Font name="System Bold Italic" size="24.0" />

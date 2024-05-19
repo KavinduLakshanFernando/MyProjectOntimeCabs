@@ -6,13 +6,32 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="766.0" prefWidth="1125.0" style="-fx-background-color: #edf2fb;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.ManageDriverController">
+<AnchorPane prefHeight="766.0" prefWidth="1125.0" style="-fx-background-color: #AFDCEC;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.ManageDriverController">
    <children>
-      <Rectangle arcHeight="30.0" arcWidth="30.0" fill="WHITE" height="277.0" layoutX="214.0" layoutY="39.0" stroke="#313143" strokeType="INSIDE" strokeWidth="0.0" width="740.0" />
+      <Rectangle arcHeight="30.0" arcWidth="30.0" fill="WHITE" height="277.0" layoutX="214.0" layoutY="39.0" strokeType="INSIDE" strokeWidth="2.0" width="740.0">
+         <stroke>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.995260663507109">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </stroke></Rectangle>
       <Text fill="#00000072" layoutX="537.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Driver Details">
          <font>
             <Font name="System Bold" size="21.0" />

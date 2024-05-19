@@ -5,13 +5,32 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="rootNode" prefHeight="766.0" prefWidth="1125.0" style="-fx-background-color: #edf2fb;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.CustomerManageController">
+<AnchorPane fx:id="rootNode" prefHeight="766.0" prefWidth="1125.0" style="-fx-background-color: #AFDCEC;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.CustomerManageController">
    <children>
-      <Rectangle arcHeight="30.0" arcWidth="30.0" fill="WHITE" height="298.0" layoutX="279.0" layoutY="23.0" strokeType="INSIDE" width="569.0" />
+      <Rectangle arcHeight="30.0" arcWidth="30.0" fill="WHITE" height="298.0" layoutX="279.0" layoutY="23.0" strokeType="INSIDE" strokeWidth="2.0" width="569.0">
+         <stroke>
+            <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.2985781990521327">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </stroke></Rectangle>
       <Text fill="#00000082" layoutX="348.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIC Number :">
          <font>
             <Font size="13.0" />
@@ -48,7 +67,23 @@
       <JFXButton buttonType="RAISED" layoutX="682.0" layoutY="259.0" onAction="#ClearbtnOnAction" prefHeight="29.0" prefWidth="78.0" style="-fx-background-color: #0466c8; -fx-background-radius: 20;" text="Clear" textFill="WHITE" />
       <JFXButton buttonType="RAISED" layoutX="588.0" layoutY="259.0" onAction="#DeletebtnOnAction" prefHeight="29.0" prefWidth="78.0" style="-fx-background-color: #0466c8; -fx-background-radius: 20;" text="Delete" textFill="WHITE" />
       <JFXButton buttonType="RAISED" layoutX="484.0" layoutY="259.0" onAction="#UpdatebtnOnAction" prefHeight="29.0" prefWidth="78.0" style="-fx-background-color: #0466c8; -fx-background-radius: 20;" text="Update" textFill="WHITE" />
-      <JFXButton buttonType="RAISED" layoutX="381.0" layoutY="259.0" onAction="#SavebtnOnAction" prefHeight="29.0" prefWidth="78.0" style="-fx-background-color: #0466c8; -fx-background-radius: 20;" text="Add" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="381.0" layoutY="259.0" onAction="#SavebtnOnAction" prefHeight="29.0" prefWidth="78.0" style="-fx-background-color: #0466c8; -fx-background-radius: 20;" text="Add" textFill="WHITE">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.4786729857819905">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </ripplerFill></JFXButton>
       <Text fill="#00000072" layoutX="503.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer Details">
          <font>
             <Font name="System Bold" size="21.0" />
