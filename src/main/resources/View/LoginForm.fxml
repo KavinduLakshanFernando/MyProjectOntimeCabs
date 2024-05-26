@@ -24,7 +24,7 @@
             <Font name="System Bold Italic" size="56.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="89.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome To OnTime Cabs!" wrappingWidth="218.373046875">
+      <Text fill="WHITE" layoutX="89.0" layoutY="287.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome To OnTime Cabs!" wrappingWidth="265.373046875">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>

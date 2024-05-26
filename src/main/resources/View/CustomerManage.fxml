@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="rootNode" prefHeight="766.0" prefWidth="1125.0" style="-fx-background-color: #AFDCEC;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.CustomerManageController">
+<AnchorPane fx:id="rootNode" prefHeight="766.0" prefWidth="1125.0" style="-fx-background-color: #c0c0c0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.CustomerManageController">
    <children>
       <Rectangle arcHeight="30.0" arcWidth="30.0" fill="WHITE" height="298.0" layoutX="279.0" layoutY="23.0" strokeType="INSIDE" strokeWidth="2.0" width="569.0">
          <stroke>
